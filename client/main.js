@@ -27,3 +27,10 @@ Template.body.events({
     return false;
   }
 });
+
+Template.resolution.events({
+  'click .delete': function(){
+    // mongo db assigns a value to each element inserted into the db collection its accessed by _id
+    Resolutions.remove(this._id);
+  }
+});
