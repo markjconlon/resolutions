@@ -7,10 +7,15 @@ Resolutions = new Mongo.Collection('resolutions');
 Template.body.helpers({
   resolutions: function() {
     if (Session.get("hideFinished")) {
+      // $ne is a mongo method to check if the field stored is not equal to whatever you provide
+      // so if hideFinished is checked find all resolutions that are not checked off as complete yet
       return Resolutions.find({checked: {$ne: true}})
     } else {
       return Resolutions.find();
     }
+  },
+  hideFinished: function(){
+    return Session.get("hideFinished");
   }
 });
 
