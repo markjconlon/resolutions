@@ -25,10 +25,7 @@ Template.body.events({
   "submit .new-resolution": function(event) {
     var title = event.target.title.value;
 
-    Resolutions.insert({
-      title: title,
-      createdAt: new Date()
-    });
+    Meteor.call("addResolution", title)
 
     event.target.title.value = "";
 
@@ -54,4 +51,4 @@ Template.resolution.events({
 
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY"
-})
+});
