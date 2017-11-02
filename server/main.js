@@ -8,6 +8,12 @@ Meteor.startup(() => {
         title: title,
         createdAt: new Date()
       });
+    },
+    updateResolution: function(id, checked){
+      Resolutions.update(id, {$set:{checked: checked}});
+    },
+    deleteResolution: function(id){
+      Resolutions.remove(id);
     }
-  })
+  });
 });

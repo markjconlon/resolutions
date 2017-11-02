@@ -41,11 +41,11 @@ Template.body.events({
 Template.resolution.events({
   "click .toggle-checked": function() {
     // checked: !this.checked means look for checked and set it equal to the opposite
-    Resolutions.update(this._id, {$set:{checked: !this.checked}});
+    Meteor.call("updateResolution", this._id, !this.checked);
   },
   "click .delete": function(){
     // mongo db assigns a value to each element inserted into the db collection its accessed by _id
-    Resolutions.remove(this._id);
+    Meteor.call("deleteResolution",this._id);
   }
 });
 
