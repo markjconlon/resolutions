@@ -6,7 +6,11 @@ Resolutions = new Mongo.Collection('resolutions');
 
 Template.body.helpers({
   resolutions: function() {
+    if (Session.get("hideFinished")) {
+      return Resolutions.find({checked: {$ne: true}})
+    } else {
       return Resolutions.find();
+    }
   }
 });
 
@@ -25,6 +29,10 @@ Template.body.events({
 
     // return false makes sure the page doesn't refresh
     return false;
+  },
+
+  "change, .hide-finished": function(event){
+    Session.set("hideFinished", event.target.checked);
   }
 });
 
