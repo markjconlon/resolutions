@@ -51,3 +51,7 @@ Template.resolution.events({
     Resolutions.remove(this._id);
   }
 });
+
+Accounts.ui.config({
+  passwordSignupFields: "USERNAME_ONLY"
+})
