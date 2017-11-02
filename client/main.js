@@ -29,7 +29,11 @@ Template.body.events({
 });
 
 Template.resolution.events({
-  'click .delete': function(){
+  "click .toggle-checked": function() {
+    // checked: !this.checked means look for checked and set it equal to the opposite
+    Resolutions.update(this._id, {$set:{checked: !this.checked}});
+  },
+  "click .delete": function(){
     // mongo db assigns a value to each element inserted into the db collection its accessed by _id
     Resolutions.remove(this._id);
   }
